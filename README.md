@@ -1,12 +1,13 @@
-# adaptation_asr
-
-
+# Investigation on various methods of personalized Greek ASR
 
 
 ## Installation
 
+Install necessary requirements using pip:
 
-
+```
+$ pip install -r requirements.txt
+```
 
 
 ## Usage
