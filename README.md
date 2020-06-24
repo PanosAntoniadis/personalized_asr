@@ -447,6 +447,28 @@ required arguments:
 - sklearn
 - numpy
 
+## Results
+
+- Recognition accuracy comparison on proposed adaptation methods
+
+| Acoustic Model  |         Language Model      | Accuracy | 
+| :-------------: | :-------------------------: | :------: |
+|    Baseline     |           Baseline          |  64.24%  |
+|    Baseline     |           Adapted           |  67.21%  |
+|    Adapted      |           Baseline          |  67.56%  |
+|    Adapted      |           Adapted           |  70.59%  |
+|    Adapted      | Clustered adapted (k-means) |  69.3%   |
+|    Adapted      |   Clustered adapted (lda)   |  69.19%  |
+
+- Recognition accuracy comparison using more suggestions
+
+|                 Method                        | Accuracy | 
+| :-------------------------------------------: | :------: |
+|                 Baseline                      |  64.24%  |
+|              Top-1 best method                |  70.59%  |
+|      Top-2 combining general and k-means      |  72.57%  |
+|      Top-2 combining general and lda          |  72.48%  |
+|    Top-3 combining general, k-means and lda   |  73.54%   |
 
 
 ## Citing
