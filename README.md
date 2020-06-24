@@ -110,6 +110,10 @@ slack_dataset
 
 ### Step 2: Language model adaptation
 
+<p align="center">
+  <img src="/language_adaptation/language_adaptation.png">
+</p>
+
 The general language model can be found [here](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Greek/). To adapt your messages to the general language model (first module in paper) run:
 
 ```
@@ -133,6 +137,10 @@ required arguments:
 
 
 ### Step 3: Acoustic model adaptation
+
+<p align="center">
+  <img src="/acoustic_adaptation/acoustic_adaptation.png">
+</p>
 
 The general acoustic model and the dictionary can be found [here](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Greek/). To adapt your recordings to the general acoustic model (second module in paper) run:
 
@@ -163,6 +171,10 @@ required arguments:
  ```
 
 ### Step 4: Clustered language model adaptation
+
+<p align="center">
+  <img src="/clustered_adaptation/clustered_language_adaptation.png">
+</p>
 
 In order to create the clustered language models (third module in paper), first apply the clustering algorithm in the training data and then generate the domain-specific language model.
 
@@ -275,6 +287,10 @@ optional argument:
 
 #### With clustering
 
+<p align="center">
+  <img src="/speech_decoding/decoding_clustering.png">
+</p>
+
 Here, the 3-stage decoding module is implemented as stated in the paper.
 
 - Classify in clusters computed with k-means
@@ -367,8 +383,62 @@ optional argument:
 
 ### Step 6: Evaluation
 
+- In order to evaluate the model, `word_align.pl` script of sphinxtrain is used. It aligns the output with the reference file and computes the total accuracy.
+
+```
+$ word_align.pl --help
+Usage:
+     calculate_wer [options] reference_file hypothesis_file
+
+Options:
+    --help, -?
+            Print a brief help message and exit.
+
+    --verbose, -v
+            Print out messages tracing the alignment algorithm.
+```
 
 
+- Compute top-2 accuracy using outputs from two adaptation models
+
+```
+$ python evaluation/compute_top2.py --help
+usage: compute_top2.py [-h] --hyp1 HYP1 --hyp2 HYP2 --transcription
+                       TRANSCRIPTION --output OUTPUT
+
+Tool that takes two ASR outputs and computes the top-2 accuracy
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+required arguments:
+  --hyp1 HYP1           The 1st hypothesis file
+  --hyp2 HYP2           The 2nd hypothesis file
+  --transcription TRANSCRIPTION
+                        The file that contains the transcriptions
+  --output OUTPUT       Final output file
+```
+
+- Compute top-3 accuracy using outputs from three adaptation models
+
+```
+$ python evaluation/compute_top3.py --help
+usage: compute_top3.py [-h] --hyp1 HYP1 --hyp2 HYP2 --hyp3 HYP3
+                       --transcription TRANSCRIPTION --output OUTPUT
+
+Tool that takes three ASR outputs and computes the top-3 accuracy
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+required arguments:
+  --hyp1 HYP1           The 1st hypothesis file
+  --hyp2 HYP2           The 2nd hypothesis file
+  --hyp3 HYP3           The 3rd hypothesis file
+  --transcription TRANSCRIPTION
+                        The file that contains the transcriptions
+  --output OUTPUT       Final output file
+```
 
 
 
