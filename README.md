@@ -441,6 +441,16 @@ required arguments:
   --output OUTPUT       Final output file
 ```
 
+## Technologies Used
+
+- spaCy
+- sklearn
+- numpy
+
+
+
+## Citing
+
 
 
 
