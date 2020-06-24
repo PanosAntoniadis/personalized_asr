@@ -34,17 +34,16 @@ if __name__ == '__main__':
 
     logging.info('Creating corpus of input data...')
 
-    with open('corpus', 'w') as w:
+    with open(os.path.join(output_dir, 'corpus'), 'w') as w:
         for message in sorted(os.listdir(input_data)):
             with open(os.path.join(input_data, message), 'r') as f:
                 for line in f:
                     w.write(line)
 
     logging.info('Generating adapted language model using n-grams...')
-    os.makedirs(output_dir)
 
     command = ['ngram-count -kndiscount -wbdiscount1 -wbdiscount2 -wbdiscount3 -interpolate',
-               '-text corpus', '-lm', os.path.join(output_dir, 'adapted.lm')]
+               '-text', os.path.join(output_dir, 'corpus'), '-lm', os.path.join(output_dir, 'adapted.lm')]
     if subprocess.call(" ".join(command), shell=True):
         sys.exit('Error in subprocess')
 
