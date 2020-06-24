@@ -80,7 +80,7 @@ required arguments:
 ```
 
 
-- Final data format of a dataset (or of a signle fold):
+- Final data format of a dataset (or of a single fold):
 
 ```
 slack_dataset
