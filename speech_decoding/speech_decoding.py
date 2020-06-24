@@ -1,7 +1,10 @@
 import os
 import sys
 import argparse
+import logging
 import subprocess
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
 if __name__ == '__main__':
     # Create an argument parser
@@ -26,7 +29,7 @@ if __name__ == '__main__':
     required.add_argument(
         '--lm', help="Path to the language model to be used", required=True)
     optional.add_argument(
-        '--mllr_path', help="Path to the mllr matrix if adapted acoustic model is used", required=True)
+        '--mllr_path', help="Path to the mllr matrix if adapted acoustic model is used")
 
     args = parser.parse_args()
     wav = args.wav
@@ -48,5 +51,8 @@ if __name__ == '__main__':
     else:
         command = ['pocketsphinx_batch', '-adcin yes', '-cepdir',  wav, '-cepext .wav',
                    '-ctl', ids, '-lm', lm, '-dict', dic, '-hmm',  hmm, '-mllr', mllr_path, '-hyp', hyp]
+
+    logging.info('Decoding given recordings...')
+    logging.info(" ".join(command))
     if subprocess.call(" ".join(command), shell=True):
         sys.exit('Error in subprocess')

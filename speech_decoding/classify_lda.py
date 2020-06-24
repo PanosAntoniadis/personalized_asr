@@ -54,7 +54,7 @@ if __name__ == '__main__':
             ids.append(line.strip('\n'))
 
     # Get messages to classify
-    messages = get_messages_from_transcription(input, has_id)
+    messages = get_messages_from_transcription(input_dir, has_id)
 
     logging.info('Represent them as vectors...')
     # Represent them as vectors

@@ -68,7 +68,7 @@ if __name__ == '__main__':
     counts_path = os.path.join(output_dir, 'counts')
     os.makedirs(counts_path)
     feature_path = os.path.join(general_hmm, 'feature_transform')
-    bw_command = ['./' + output_dir + 'bw -hmmdir', hmm, '-cepdir', mfc_path, '-moddeffn', mdef_path, '-ts2cbfn .cont. -feat 1s_c_d_dd -cmn batch -agc none -dictfn',
+    bw_command = ['./' + output_dir + 'bw -hmmdir', general_hmm, '-cepdir', mfc_path, '-moddeffn', mdef_path, '-ts2cbfn .cont. -feat 1s_c_d_dd -cmn batch -agc none -dictfn',
                   dic, '-ctlfn', ids, '-lsnfn', transcriptions, '-accumdir', counts_path, '-lda', feature_path, '-varnorm no -cmninit 40,3,-1']
 
     if subprocess.call(" ".join(bw_command), shell=True):

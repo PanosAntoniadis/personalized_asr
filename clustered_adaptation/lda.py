@@ -45,7 +45,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     input_dir = args.input
     output_dir = args.output
-    n_topics = args.n_topics
+    n_clusters = args.n_clusters
     sentence = args.sentence
     alpha = args.alpha
     eta = args.eta
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         messages = get_messages(input_dir)
 
     logging.info(
-        'Run lda with {} number of topics...'.format(n_topics))
+        'Run lda with {} number of clusters...'.format(n_clusters))
 
     # Initialise the count vectorizer
     if bigram:
@@ -82,10 +82,10 @@ if __name__ == '__main__':
     count_data = count_vectorizer.fit_transform(messages)
 
     if alpha and eta:
-        lda = LDA(n_components=n_topics, n_jobs=-1,
+        lda = LDA(n_components=n_clusters, n_jobs=-1,
                   doc_topic_prior=alpha, topic_word_prior=eta)
     else:
-        lda = LDA(n_components=n_topics, n_jobs=-1)
+        lda = LDA(n_components=n_clusters, n_jobs=-1)
     X = lda.fit_transform(count_data)
 
     # A sentence is included in the topic that represents the most.
@@ -101,4 +101,4 @@ if __name__ == '__main__':
 
     # Save in each cluster a file that contains all the emails of it.
     # It will be used in the language model.
-    cluster2text(output_dir, n_topics)
+    cluster2text(output_dir, n_clusters)

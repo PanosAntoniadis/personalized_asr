@@ -54,7 +54,7 @@ if __name__ == '__main__':
     if not hmm.endswith('/'):
         hmm = hmm + '/'
     if not output_dir.endswith('/'):
-        output = output + '/'
+        output_dir = output_dir + '/'
     if not clusters.endswith('/'):
         clusters = clusters + '/'
 

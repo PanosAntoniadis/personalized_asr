@@ -1,7 +1,10 @@
 import os
 import sys
+import logging
 import argparse
 import subprocess
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='''
@@ -32,9 +35,11 @@ if __name__ == "__main__":
     for cluster in sorted(os.listdir(input_dir)):
         cluster_path = os.path.join(input_dir, cluster)
         if os.path.isdir(cluster_path):
+            logging.info('Generating adapted language model of {}...'.format(cluster))
             command = ['ngram-count -interpolate -text', os.path.join(cluster_path, 'corpus'), '-wbdiscount1 -wbdiscount2 -wbdiscount3 -lm', os.path.join(cluster_path, 'adapted.lm')]
             if subprocess.call(" ".join(command), shell=True):
                 sys.exit('Error in subprocess')
+            logging.info('Generating merged adapted language model of {}...'.format(cluster))
             command = ['ngram -lm', general_lm, '-mix-lm', os.path.join(cluster_path, 'adapted.lm'), ' -lambda', lambda_par, '-write-lm',  os.path.join(cluster_path, model_name)]
             if subprocess.call(" ".join(command), shell=True):
                 sys.exit('Error in subprocess')
