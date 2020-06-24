@@ -257,7 +257,7 @@ required arguments:
 
 #### Without clustering
 
-Specify the language and acoustic model you want to use (adapted of general) and run the following:
+Specify the language and acoustic model you want to use (adapted or general) and run the following:
 
 ```
 $ python speech_decoding/speech_decoding.py --help
