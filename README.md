@@ -1,4 +1,4 @@
-# Investigation on various methods of personalized Greek ASR
+# Personalized Greek Automatic Speech Recognition towards Dictation via acoustic and lingual adaptation
 
 
 ## Installation
