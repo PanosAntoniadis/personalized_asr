@@ -1,7 +1,7 @@
-## A mechanism for personalized Automatic Speech Recognition for less frequently spoken languages: the Greek case
+# A mechanism for personalized Automatic Speech Recognition for less frequently spoken languages: the Greek case
 
 
-### Abstract
+## Abstract
 > Automatic Speech Recognition (ASR) has become increasingly popular given that it signif-
 icantly simplifies human-computer interaction, providing a more intuitive way of communica-
 tion. Building an accurate, general-purpose ASR system is a challenging task that requires a
@@ -21,7 +21,7 @@ formed on a self-created database containing 746 corpora included in messaging a
 and mails from the same user, demonstrates that the proposed approach can achieve better
 results than the existing Greek models.
 
-### Installation
+## Installation
 
 Install necessary requirements using pip:
 
@@ -30,10 +30,10 @@ $ pip install -r requirements.txt
 ```
 
 
-### Usage
+## Usage
 
 
-#### Step 1: Data preparation
+### Step 1: Data preparation
 
 - First, download our slack dataset from [add link]. In case you want to adapt to your own messages make sure they are in the following format (Sphinx format):
   - `\data` directory that contains the messages as *name_id*. The messages should contain only alphabetical Greek words.
@@ -129,7 +129,7 @@ slack_dataset
 
 ```
 
-#### Step 2: Language model adaptation
+### Step 2: Language model adaptation
 
 <p align="center">
   <img src="/language_adaptation/language_adaptation.png">
@@ -157,7 +157,7 @@ required arguments:
 
 
 
-#### Step 3: Acoustic model adaptation
+### Step 3: Acoustic model adaptation
 
 <p align="center">
   <img src="/acoustic_adaptation/acoustic_adaptation.png">
@@ -191,7 +191,7 @@ required arguments:
 
  ```
 
-#### Step 4: Clustered language model adaptation
+### Step 4: Clustered language model adaptation
 
 <p align="center">
   <img src="/clustered_adaptation/clustered_language_adaptation.png">
@@ -275,7 +275,7 @@ required arguments:
 
 ### Step 5: Speech decoding
 
-#### Without clustering
+##### Without clustering
 
 Specify the language and acoustic model you want to use (adapted or general) and run the following:
 
@@ -306,7 +306,7 @@ optional argument:
 
 
 
-#### With clustering
+##### With clustering
 
 <p align="center">
   <img src="/speech_decoding/decoding_clustering.png">
@@ -461,13 +461,13 @@ required arguments:
   --output OUTPUT       Final output file
 ```
 
-### Technologies Used
+## Technologies Used
 
 - spaCy
 - sklearn
 - numpy
 
-### Results
+## Results
 
 - Recognition accuracy comparison on proposed adaptation methods
 
@@ -491,7 +491,7 @@ required arguments:
 |    Top-3 combining general, k-means and lda   |  73.54%   |
 
 
-### Citing
+## Citing
 
 
 
