@@ -33,7 +33,7 @@ $ pip install -r requirements.txt
 ### Usage
 
 
-### Step 1: Data preparation
+#### Step 1: Data preparation
 
 - First, download our slack dataset from [add link]. In case you want to adapt to your own messages make sure they are in the following format (Sphinx format):
   - `\data` directory that contains the messages as *name_id*. The messages should contain only alphabetical Greek words.
@@ -129,7 +129,7 @@ slack_dataset
 
 ```
 
-### Step 2: Language model adaptation
+#### Step 2: Language model adaptation
 
 <p align="center">
   <img src="/language_adaptation/language_adaptation.png">
@@ -157,7 +157,7 @@ required arguments:
 
 
 
-### Step 3: Acoustic model adaptation
+#### Step 3: Acoustic model adaptation
 
 <p align="center">
   <img src="/acoustic_adaptation/acoustic_adaptation.png">
@@ -191,7 +191,7 @@ required arguments:
 
  ```
 
-### Step 4: Clustered language model adaptation
+#### Step 4: Clustered language model adaptation
 
 <p align="center">
   <img src="/clustered_adaptation/clustered_language_adaptation.png">
