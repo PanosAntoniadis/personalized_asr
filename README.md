@@ -35,7 +35,7 @@ $ pip install -r requirements.txt
 
 ### Step 1: Data preparation
 
-- First, download our slack dataset from [add link]. In case you want to adapt to your own messages make sure they are in the following format (Sphinx format):
+- First, download our slack dataset from [link available soon]. In case you want to adapt to your own messages make sure they are in the following format (Sphinx format):
   - `\data` directory that contains the messages as *name_id*. The messages should contain only alphabetical Greek words.
   - `\wav` directory that contains the corresponding recordings as *name_id.wav*. The recorded files should be in 16kHz sampling rate and single channel.
 
@@ -488,10 +488,7 @@ required arguments:
 |              Top-1 best method                |  70.59%  |
 |      Top-2 combining general and k-means      |  72.57%  |
 |      Top-2 combining general and lda          |  72.48%  |
-|    Top-3 combining general, k-means and lda   |  73.54%   |
-
-
-## Citing
+|    Top-3 combining general, k-means and lda   |  73.54%  |
 
 
 
