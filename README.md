@@ -323,7 +323,7 @@ optional argument:
 
 Here, the 3-stage decoding module is implemented as stated in the paper.
 
-- Classify in clusters computed with Kmeans
+- Classify in clusters computed with K-means
 ```
 $ python speech_decoding/classify_kmeans.py --help
 usage: classify_kmeans.py [-h] --input INPUT --centers CENTERS --ids IDS
