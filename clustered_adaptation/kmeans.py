@@ -9,7 +9,7 @@ logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''
-        Tool for clustering messages using the k-means allgorithm.
+        Tool for clustering messages using the k-means algorithm.
     ''')
 
     required = parser.add_argument_group('required arguments')
