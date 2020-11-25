@@ -215,7 +215,7 @@ $ python clustered_adaptation/kmeans.py --help
 usage: kmeans.py [-h] --input INPUT --output OUTPUT --n_clusters N_CLUSTERS
                  [--sentence]
 
-Tool for clustering messages using the k-means allgorithm.
+Tool for clustering messages using the k-means algorithm.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -239,7 +239,7 @@ usage: lda.py [-h] --input INPUT --output OUTPUT --n_clusters N_CLUSTERS
               [--sentence] [--alpha ALPHA] [--eta ETA] [--bigram]
               [--max_df MAX_DF] [--min_df MIN_DF]
 
-Tool for clustering messages using the lda allgorithm.
+Tool for clustering messages using the lda algorithm.
 
 optional arguments:
   -h, --help            show this help message and exit
