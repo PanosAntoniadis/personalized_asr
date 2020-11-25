@@ -2,24 +2,33 @@
 
 
 ## Abstract
-> Automatic Speech Recognition (ASR) has become increasingly popular given that it signif-
-icantly simplifies human-computer interaction, providing a more intuitive way of communica-
-tion. Building an accurate, general-purpose ASR system is a challenging task that requires a
-lot of data and computing power. Especially for languages not widely spoken, such as Greek,
-the lack of adequately large speech datasets leads to the development of ASR systems that
-are adapted to a restricted text corpus and for specific activities. When used in specific do-
-mains, these systems can be both accurate and fast, without the need for large datasets and
-extended training. An interesting domain of application of such narrow-scope ASR systems
-is the development of personalized speech to text systems that can be used for dictation. In
-this work we propose three personalisation-via-adaptation modules, that can be integrated into
-any ASR/dictation system and increase its accuracy. The adaptation can be achieved both on
-the language model (based on the previous input of the user) as well as on the acoustic model
-(by using a set of user’s narrations). To provide more precise recommendations, clustering
-algorithms are applied and topic-specific language models are created. Also, heterogeneous
-adaptation methods are combined to provide recommendations to the user. Evaluation per-
-formed on a self-created database containing 746 corpora included in messaging applications
-and mails from the same user, demonstrates that the proposed approach can achieve better
-results than the existing Greek models.
+> Automatic Speech Recognition (ASR) has become increasingly popular given that it significantly simplifies human-computer interaction, providing a more intuitive way of communication. Building an accurate, general-purpose ASR system is a challenging task that requires a lot of data and computing power. Especially for languages not widely spoken, such as Greek, the lack of adequately large speech datasets leads to the development of ASR systems that are adapted to a restricted text corpus and for specific activities. When used in specific domains, these systems can be both accurate and fast, without the need for large datasets and extended training. An interesting domain of application of such narrow-scope ASR systems is the development of personalized speech to text systems that can be used for dictation. In this work we propose three personalisation-via-adaptation modules, that can be integrated into any ASR/dictation system and increase its accuracy. The adaptation can be achieved both on the language model (based on the previous input of the user) as well as on the acoustic model (by using a set of user's narrations). To provide more precise recommendations, clustering algorithms are applied and topic-specific language models are created. Also, heterogeneous adaptation methods are combined to provide recommendations to the user. Evaluation performed on a self-created database containing 746 corpora included in messaging applications and mails from the same user, demonstrates that the proposed approach can achieve better results than the existing Greek models.
+
+Auhors: Panagiotis Antoniadis, Emmanouil Tsardoulias, Andreas Symeonidis
+
+## Results
+
+- Recognition accuracy comparison on proposed adaptation methods
+
+| Acoustic Model  |         Language Model      | Accuracy | 
+| :-------------: | :-------------------------: | :------: |
+|    Baseline     |           Baseline          |  64.24%  |
+|    Baseline     |           Adapted           |  67.21%  |
+|    Adapted      |           Baseline          |  67.56%  |
+|    Adapted      |           Adapted           |  70.59%  |
+|    Adapted      | Clustered adapted (K-means) |  69.3%   |
+|    Adapted      |   Clustered adapted (LDA)   |  69.19%  |
+
+- Recognition accuracy comparison using more suggestions
+
+|                 Method                        | Accuracy | 
+| :-------------------------------------------: | :------: |
+|                 Baseline                      |  64.24%  |
+|              Top-1 best method                |  70.59%  |
+|      Top-2 combining general and K-means      |  72.57%  |
+|      Top-2 combining general and LDA          |  72.48%  |
+|    Top-3 combining general, K-means and LDA   |  73.54%  |
+
 
 ## Installation
 
@@ -191,15 +200,15 @@ required arguments:
 
  ```
 
-### Step 4: Clustered language model adaptation
+### Step 4: Cluster-based language model adaptation
 
 <p align="center">
   <img src="/clustered_adaptation/clustered_language_adaptation.png">
 </p>
 
-In order to create the clustered language models (third module in paper), first apply the clustering algorithm in the training data and then generate the domain-specific language model.
+In order to create the cluster-based language models (third module in paper), first apply the clustering algorithm in the training data and then generate the domain-specific language model.
 
-- Run the k-means algorithm:
+- Run the K-means algorithm:
 
 ```
 $ python clustered_adaptation/kmeans.py --help
@@ -222,7 +231,7 @@ optional arguments:
                         in message-level
 ```
 
-- Run the lda-based algorithm: 
+- Run the LDA-based clustering algorithm: 
 
 ```
 $ python clustered_adaptation/lda.py --help
@@ -277,7 +286,7 @@ required arguments:
 
 ##### Without clustering
 
-Specify the language and acoustic model you want to use (adapted or general) and run the following:
+For the general language model adaptation, specify the language and acoustic model you want to use (adapted or general) and run the following:
 
 ```
 $ python speech_decoding/speech_decoding.py --help
@@ -314,7 +323,7 @@ optional argument:
 
 Here, the 3-stage decoding module is implemented as stated in the paper.
 
-- Classify in clusters computed with k-means
+- Classify in clusters computed with Kmeans
 ```
 $ python speech_decoding/classify_kmeans.py --help
 usage: classify_kmeans.py [-h] --input INPUT --centers CENTERS --ids IDS
@@ -338,7 +347,7 @@ optional arguments:
 
 ```
 
-- Classify in clusters computed with lda
+- Classify in clusters computed with LDA
 
 
 ```
@@ -463,33 +472,12 @@ required arguments:
 
 ## Technologies Used
 
-- spaCy
+- CMU Sphinx
 - sklearn
 - numpy
-
-## Results
-
-- Recognition accuracy comparison on proposed adaptation methods
-
-| Acoustic Model  |         Language Model      | Accuracy | 
-| :-------------: | :-------------------------: | :------: |
-|    Baseline     |           Baseline          |  64.24%  |
-|    Baseline     |           Adapted           |  67.21%  |
-|    Adapted      |           Baseline          |  67.56%  |
-|    Adapted      |           Adapted           |  70.59%  |
-|    Adapted      | Clustered adapted (k-means) |  69.3%   |
-|    Adapted      |   Clustered adapted (lda)   |  69.19%  |
-
-- Recognition accuracy comparison using more suggestions
-
-|                 Method                        | Accuracy | 
-| :-------------------------------------------: | :------: |
-|                 Baseline                      |  64.24%  |
-|              Top-1 best method                |  70.59%  |
-|      Top-2 combining general and k-means      |  72.57%  |
-|      Top-2 combining general and lda          |  72.48%  |
-|    Top-3 combining general, k-means and lda   |  73.54%  |
-
+- num2words
+- alphabet-detector
+- spaCy
 
 
 
