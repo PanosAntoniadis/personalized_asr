@@ -9,7 +9,7 @@ Keywords: Automatic Speech recognition · Dictation · Personalization · Cluste
 
 Auhors: Panagiotis Antoniadis, Emmanouil Tsardoulias, Andreas Symeonidis
 
-<img src="/overview.png" alt="overview"/>
+<img src="/overview.png" alt="overview" width="800"/>
 
 ## Results
 
