@@ -1,34 +1,47 @@
 # A mechanism for personalized Automatic Speech Recognition for less frequently spoken languages: the Greek case
 
 
+
 ## Abstract
-> Automatic Speech Recognition (ASR) has become increasingly popular given that it significantly simplifies human-computer interaction, providing a more intuitive way of communication. Building an accurate, general-purpose ASR system is a challenging task that requires a lot of data and computing power. Especially for languages not widely spoken, such as Greek, the lack of adequately large speech datasets leads to the development of ASR systems that are adapted to a restricted text corpus and for specific activities. When used in specific domains, these systems can be both accurate and fast, without the need for large datasets and extended training. An interesting domain of application of such narrow-scope ASR systems is the development of personalized speech to text systems that can be used for dictation. In this work we propose three personalisation-via-adaptation modules, that can be integrated into any ASR/dictation system and increase its accuracy. The adaptation can be achieved both on the language model (based on the previous input of the user) as well as on the acoustic model (by using a set of user's narrations). To provide more precise recommendations, clustering algorithms are applied and topic-specific language models are created. Also, heterogeneous adaptation methods are combined to provide recommendations to the user. Evaluation performed on a self-created database containing 746 corpora included in messaging applications and mails from the same user, demonstrates that the proposed approach can achieve better results than the existing Greek models.
+> Automatic Speech Recognition (ASR) has become increasingly popular since it significantly simplifies human-computer interaction, providing a more intuitive way of communication. Building an accurate, general-purpose ASR system is a challenging task that requires a lot of data and computing power. Especially for languages not widely spoken, such as Greek, the lack of adequately large speech datasets leads to the development of ASR systems adapted to a restricted corpus and/or for specific topics. When used in specific domains, these systems can be both accurate and fast, without the need for large datasets and extended training. An interesting application domain of such narrow-scope ASR systems is the development of personalized models that can be used for dictation. In the current work we present three personalization-via-adaptation modules, that can be integrated into any ASR/dictation system and increase its accuracy. The adaptation can be applied both on the language model (based on past text samples of the user) as well as on the acoustic model (using a set of user's narrations). To provide more precise recommendations, clustering algorithms are applied and topic-specific language models are created. Also, heterogeneous adaptation methods are combined to provide recommendations to the user. Evaluation performed on a self-created database containing 746 corpora included in messaging applications and e-mails from the same user, demonstrates that the proposed approach can achieve better results than the vanilla existing Greek models.
+
+Keywords: Automatic Speech recognition · Dictation · Personalization · Clustering
 
 Auhors: Panagiotis Antoniadis, Emmanouil Tsardoulias, Andreas Symeonidis
 
+<img src="/overview.png" alt="overview"/>
+
 ## Results
 
-- Recognition accuracy comparison on proposed adaptation methods
+- Performance comparison of proposed adaptation methods
 
-| Acoustic Model  |         Language Model      | Accuracy | 
+| Acoustic Model  |         Language Model      |    WER   | 
 | :-------------: | :-------------------------: | :------: |
-|    Baseline     |           Baseline          |  64.24%  |
-|    Baseline     |           Adapted           |  67.21%  |
-|    Adapted      |           Baseline          |  67.56%  |
-|    Adapted      |           Adapted           |  70.59%  |
-|    Adapted      | Clustered adapted (K-means) |  69.3%   |
-|    Adapted      |   Clustered adapted (LDA)   |  69.19%  |
+|    Baseline     |           Baseline          |  35.76  |
+|    Baseline     |           Adapted           |  32.79  |
+|    Adapted      |           Baseline          |  32.44  |
+|    Adapted      |           Adapted           |  29.41  |
+|    Adapted      | Clustered adapted (K-means) |  30.7   |
+|    Adapted      |   Clustered adapted (LDA)   |  30.81  |
 
-- Recognition accuracy comparison using more suggestions
+- Performance comparison using more suggestions
 
-|                 Method                        | Accuracy | 
+|                 Method                        |    WER   | 
 | :-------------------------------------------: | :------: |
-|                 Baseline                      |  64.24%  |
-|              Top-1 best method                |  70.59%  |
-|      Top-2 combining general and K-means      |  72.57%  |
-|      Top-2 combining general and LDA          |  72.48%  |
-|    Top-3 combining general, K-means and LDA   |  73.54%  |
+|                 Baseline                      |  35.76  |
+|              Top-1 best method                |  29.41  |
+|      Top-2 combining general and K-means      |  27.43  |
+|      Top-2 combining general and LDA          |  27.52  |
+|    Top-3 combining general, K-means and LDA   |  26.46  |
 
+- Performance comparison with other ASR systems that support Greek
+
+|                 Method                        | Size (Mb)|    WER   | 
+| :-------------------------------------------: | :------: | :------: |
+|              CMU Sphinx General               |    113   |  35.76  |
+|              Alpha Cephei Vosk                |   1,100  |  28.58  |
+|            Google Cloud Speech-to-Text        |     -    |  11.26  |
+|            CMU Sphinx Adapted (ours)          |    114   |  29.41  |
 
 ## Installation
 
@@ -140,9 +153,7 @@ slack_dataset
 
 ### Step 2: Language model adaptation
 
-<p align="center">
-  <img src="/language_adaptation/language_adaptation.png">
-</p>
+<img src="/language_adaptation/language_adaptation.png" alt="language_adaptation"/>
 
 The general language model can be found [here](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Greek/). To adapt your messages to the general language model (first module in paper) run:
 
@@ -168,9 +179,7 @@ required arguments:
 
 ### Step 3: Acoustic model adaptation
 
-<p align="center">
-  <img src="/acoustic_adaptation/acoustic_adaptation.png">
-</p>
+<img src="/acoustic_adaptation/acoustic_adaptation.png" alt="acoustic_adaptation" width="700"/>
 
 The general acoustic model and the dictionary can be found [here](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Greek/). To adapt your recordings to the general acoustic model (second module in paper) run:
 
@@ -202,9 +211,7 @@ required arguments:
 
 ### Step 4: Cluster-based language model adaptation
 
-<p align="center">
-  <img src="/clustered_adaptation/clustered_language_adaptation.png">
-</p>
+<img src="/clustered_adaptation/clustered_language_adaptation.png" alt="clustered_adaptation" width="700"/>
 
 In order to create the cluster-based language models (third module in paper), first apply the clustering algorithm in the training data and then generate the domain-specific language model.
 
@@ -317,9 +324,7 @@ optional argument:
 
 ##### With clustering
 
-<p align="center">
-  <img src="/speech_decoding/decoding_clustering.png">
-</p>
+<img src="/speech_decoding/decoding_clustering.png" alt="speech_decoding" />
 
 Here, the 3-stage decoding module is implemented as stated in the paper.
 
