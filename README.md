@@ -38,9 +38,9 @@ Auhors: Panagiotis Antoniadis, Emmanouil Tsardoulias, Andreas Symeonidis
 
 |                 Method                        | Size (Mb)|    WER   | 
 | :-------------------------------------------: | :------: | :------: |
-|              CMU Sphinx General               |    113   |  35.76  |
-|              Alpha Cephei Vosk                |   1,100  |  28.58  |
-|            Google Cloud Speech-to-Text        |     -    |  11.26  |
+| [CMU Sphinx General](https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Greek/) |    113   |  35.76  |
+| [Alpha Cephei Vosk](https://alphacephei.com/vosk/)                |   1,100  |  28.58  |
+| [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text)        |     -    |  11.26  |
 |            CMU Sphinx Adapted (ours)          |    114   |  29.41  |
 
 ## Installation
