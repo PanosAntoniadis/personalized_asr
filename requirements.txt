@@ -31,6 +31,6 @@ spacy==2.3.0
 srsly==1.0.2
 thinc==7.4.1
 tqdm==4.46.0
-urllib3==1.25.8
+urllib3==1.26.5
 wasabi==0.7.0
 zipp==3.1.0
