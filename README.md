@@ -9,6 +9,8 @@ Keywords: Automatic Speech recognition · Dictation · Personalization · Cluste
 
 Auhors: Panagiotis Antoniadis, Emmanouil Tsardoulias, Andreas Symeonidis
 
+Paper: https://link.springer.com/article/10.1007/s11042-022-12953-6
+
 <img src="/overview.png" alt="overview" width="800"/>
 
 ## Results
@@ -484,5 +486,10 @@ required arguments:
 - alphabet-detector
 - spaCy
 
-
-
+## Citation
+```
+Antoniadis, P., Tsardoulias, E. & Symeonidis, A. 
+A mechanism for personalized Automatic Speech Recognition for less frequently spoken languages: the Greek case. 
+Multimed Tools Appl (2022). 
+https://doi.org/10.1007/s11042-022-12953-6
+```
