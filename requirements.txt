@@ -10,7 +10,7 @@ cymem==2.0.3
 el-core-news-md==2.3.0
 idna==2.9
 importlib-metadata==1.6.1
-joblib==0.15.1
+joblib==1.2.0
 mkl-fft==1.1.0
 mkl-random==1.1.1
 mkl-service==2.3.0
