@@ -5,7 +5,7 @@ cffi==1.14.0
 chardet==3.0.4
 conda==4.8.3
 conda-package-handling==1.7.0
-cryptography==3.3.2
+cryptography==39.0.1
 cymem==2.0.3
 el-core-news-md==2.3.0
 idna==2.9
